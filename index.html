@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>spec.js</title>
+    <script src="require.js"></script>
+    <script src="spec.js"></script>
+    <style>
+      body {
+        font-family: "Helvetica";
+        font-weight: normal;
+        font-size: 1.5em;
+        line-height: 1.75em;
+      }
+      div { margin: 0.5em; padding: 0.5em; }
+      .passed { background-color: #0C0; }
+      .failed { background-color: #C00; }
+      .result { margin-left: -0.5em; }
+    </style>
+  </head>
+  <body>
+    <div id="result"></div>
+  	<script>
+    	var foo = 5;
+    	describe("matcher for integer", function() {
+    		it("equal works", function() {
+    			foo.should(equal(5));
+    		});
+    		it("not_equal works", function() {
+    			foo.should(not_equal(4));
+    		});
+    	});
+    </script> 
+  </body>
+</html>
