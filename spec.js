@@ -6,6 +6,9 @@ var matcher = require('./matcher');
   Object.prototype.should = function (matcher) {
     matcher.matches(this);
   };
+  Object.prototype.should_be = function (matcher) {
+    this.should(matcher);
+  };
 
   global.describe = function (context, callback) {
     logger.addContext(context);
@@ -39,5 +42,9 @@ var matcher = require('./matcher');
 
   global.not_equal = function (expected) {
     return new matcher.Matcher('!=', expected);
+  };
+
+  global.lower_than = function (expected) {
+    return new matcher.Matcher('<', expected);
   };
 }(window, logger));
