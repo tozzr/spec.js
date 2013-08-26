@@ -8,11 +8,14 @@ var Matcher = function (operation, expected) {
 };
 
 Matcher.prototype.matches = function (actual) {
-  var result = eval(actual + ' ' + this.operation + ' ' + this.expected);
-  if (result) {
+  if (this.evaluate(actual)) {
     return;
   }
   throw new ExpectationError('expected ' + actual + ' ' + this.operation + ' ' + this.expected);
+};
+
+Matcher.prototype.evaluate = function (actual) {
+  return eval(actual + ' ' + this.operation + ' ' + this.expected);
 };
 
 exports.Matcher = Matcher;
